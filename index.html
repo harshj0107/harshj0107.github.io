@@ -54,7 +54,7 @@
 
 let userForm = document.getElementById("user-form");
 // console.log(userForm);
-const retrieveEntries = () => {
+const getEntries = () => {
     let entries = localStorage.getItem("user-entries"); 
     if (entries) {
     entries = JSON.parse(entries);
@@ -65,17 +65,17 @@ const retrieveEntries = () => {
     return entries;
 }
 
-let userEntries = retrieveEntries();
+let userEntries = getEntries();
 
-const displayEntries = () => {
-        const entries = retrieveEntries();
+const showAll = () => {
+        const entries = getEntries();
 
         const tableEntries = entries.map((entry) => {
             const nameCell = `<td class='border px-4 py-2'>${entry.name}</td>`; 
             const emailCell = `<td class='border px-4 py-2'>${entry.email}</td>`; 
             const passwordCell = `<td class='border px-4 py-2'>${entry.password}</td>`; 
             const dobCell = `<td class='border px-4 py-2'>${entry.dob}</td>`; 
-            const acceptTermsCell = `<td class='border px-4_py-2'>${entry.acceptedTermsAndconditions}</td>`;
+            const acceptTermsCell = `<td class='border px-4 py-2'>${entry.acceptedTermsAndconditions}</td>`;
             
             const row = `<tr>${nameCell} ${emailCell} ${passwordCell} ${dobCell} ${acceptTermsCell}</tr>`;
             return row; 
@@ -92,7 +92,7 @@ const displayEntries = () => {
 const saveUserForm = (event) => {
     event.preventDefault(); 
     const name = document.getElementById("fname").value; 
-    const email = document.getElementById("email").value; 
+    const email = document.getElementById("email").value;
     const password = document.getElementById("password").value; 
     const dob = document.getElementById("dob").value;
     const acceptedTermsAndconditions = document.getElementById("acceptTerms").checked;
@@ -134,7 +134,7 @@ const saveUserForm = (event) => {
         window.alert("date is not valid");
     }
 
-    else if(age <= 18 || age >= 55 || isNaN(age))
+    else if(age < 18 || age > 55 || isNaN(age))
     {
         // console.log("age is invalid");
         window.alert("age between 18 to 55.");
@@ -142,12 +142,13 @@ const saveUserForm = (event) => {
     else
     {
         userEntries.push(entry);
+        localStorage.setItem("user-entries", JSON.stringify(userEntries));
+        showAll();
+        location.reload();
     }
 
-    localStorage.setItem("user-entries", JSON.stringify(userEntries));
-    displayEntries();
 }
 userForm.addEventListener("submit", saveUserForm);
-displayEntries();
+showAll();
 </script>
 </html>
