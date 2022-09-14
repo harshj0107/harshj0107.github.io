@@ -134,7 +134,7 @@ const saveUserForm = (event) => {
         window.alert("date is not valid");
     }
 
-    else if(age < 18 || age > 55 || isNaN(age))
+    else if(age <= 18 || age >= 55 || isNaN(age))
     {
         // console.log("age is invalid");
         window.alert("age between 18 to 55.");
