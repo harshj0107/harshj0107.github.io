@@ -50,7 +50,23 @@
         </div>
     </div>
 </body>
+
 <script>
+
+// const email = document.getElementById('email');
+// email.addEventListener('input', () => validate(email));
+
+// const submit = document.getElementById('submit');
+// submit.addEventListener('click', () => validate(email));
+
+function validate(element){
+    if(element.validity.typeMismatch){
+        element.setCustomValidity("The Email is not in the right format!!!");
+        element.reportValidity();
+    } else{
+        element.setCustomValidity('');
+    }
+}
 
 let userForm = document.getElementById("user-form");
 // console.log(userForm);
@@ -78,7 +94,7 @@ const showAll = () => {
             const acceptTermsCell = `<td class='border px-4 py-2'>${entry.acceptedTermsAndconditions}</td>`;
             
             const row = `<tr>${nameCell} ${emailCell} ${passwordCell} ${dobCell} ${acceptTermsCell}</tr>`;
-            return row; 
+            return row;
         }).join("\n");
 
         const table = `<table class="table-auto w-full"><tr><th class="px-4 py-2">Name</th>
@@ -122,7 +138,6 @@ const saveUserForm = (event) => {
         showAll();
         location.reload();
     }
-
 }
 userForm.addEventListener("submit", saveUserForm);
 showAll();
