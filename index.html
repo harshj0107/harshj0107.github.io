@@ -32,8 +32,8 @@
         <label for="password" cIass="text-md w-40 inline-block font-medium leading-5 text-gray-700"> Password </label>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="password" id="password" name="password" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 p focus:invalid:border-pink-500 focus:invalid:ring-pink-500" 
-        placeholder="Enter password" minlength="8" maxlength="15" required></br>
-        <label for="dob class text-md w-40 inline-block font-medium leading-5 text-gray-700">Date of Birth </label> 
+        placeholder="Enter password" required></br>
+        <label for="dob" class="text-md w-40 inline-block font-medium leading-5 text-gray-700">Date of Birth </label> 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="date" id="dob" name="dob" class="bg-gray-100 inline-block rounded-lg shadow-md px-4 py-3 mb-5 text-base leading-6 placeholder-gra focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
         required></br> 
@@ -110,31 +110,7 @@ const saveUserForm = (event) => {
     input_year = d1.getFullYear();
     let age = current_year-input_year;
 
-    if(password.length < 8 || password.length > 15)
-    {
-        // console.log("password not valid");
-        window.alert("password is not valid");
-    }
-
-    else if(email == null || email == " ")
-    {
-        // console.log("email not valid");
-        window.alert("email is not valid");
-    }
-
-    else if(fname == null || fname == "")
-    {
-        // console.log("fname not enterd");
-        window.alert("fname is not valid");
-    }
-
-    else if(dob == null || dob == "")
-    {
-        // console.log("date not enterd");
-        window.alert("date is not valid");
-    }
-
-    else if(age < 18 || age > 55 || isNaN(age))
+    if(age < 18 || age > 55 || isNaN(age))
     {
         // console.log("age is invalid");
         window.alert("age between 18 to 55.");
