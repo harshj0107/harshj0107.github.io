@@ -75,11 +75,7 @@
     const dateText = document.getElementById("dob");
     dateText.min = new Date(minDateText).toLocaleDateString("en-ca");
     dateText.max = new Date(maxDateText).toLocaleDateString("en-ca");
-    // dateText.addEventListener("input", () => {
-    //   let age = calculate_age(new Date(dateText.value));
-    //   console.log(calculate_age());
-    // });
-
+  
     function validate(element) {
     if (element.validity.typeMismatch) {
         element.setCustomValidity("The Email is not in the right format!!!");
